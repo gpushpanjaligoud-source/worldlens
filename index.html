@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorldLens | Global Development Explorer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon">W</span><div><b>WorldLens</b><small>GLOBAL INSIGHTS</small></div></div>
+    <p class="side-label">WORKSPACE</p>
+    <div class="nav active">▦ &nbsp; Explorer</div>
+    <div class="side-note"><span>✦</span><h3>Understand the world.</h3><p>Explore public development data and discover how countries change over time.</p></div>
+    <div class="side-footer"><i></i> Public data explorer</div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar"><span>Workspace <b>/</b> <strong>Global Explorer</strong></span><span class="api-status"><i></i> World Bank data</span></header>
+    <div class="content">
+      <section class="hero">
+        <div><p class="eyebrow">— GLOBAL DEVELOPMENT INTELLIGENCE</p><h1>See the world<br><em>in perspective.</em></h1><p class="hero-copy">Compare countries through the numbers that shape our future. Choose an indicator and explore the story behind the data.</p></div>
+        <div class="globe-art"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="globe">W</div><span class="tag tag-a">DATA, MADE CLEAR</span><span class="tag tag-b">GLOBAL · OPEN · PUBLIC</span></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><div><small>01 / SET YOUR COMPARISON</small><h2>Choose your countries</h2></div><span class="badge"><i></i> Interactive explorer</span></div>
+        <div class="filters">
+          <label><span><i class="dot blue"></i> COUNTRY A</span><select id="countryA"></select></label>
+          <div class="vs">VS</div>
+          <label><span><i class="dot coral"></i> COUNTRY B</span><select id="countryB"></select></label>
+          <label><span>DEVELOPMENT INDICATOR</span><select id="indicator"><option value="population">Population</option><option value="gdp">GDP (current US$)</option><option value="life">Life expectancy at birth</option></select></label>
+          <label><span>TIME RANGE</span><select id="yearRange"><option value="5">Last 5 available years</option><option value="10" selected>Last 10 available years</option><option value="20">Last 20 available years</option><option value="100">All years since 2000</option></select></label>
+        </div>
+        <div class="panel-bottom"><p>Data is sourced from the World Bank's public indicators API.</p><button id="compareBtn" class="primary">Compare countries <b>↗</b></button></div>
+      </section>
+
+      <div id="notice" class="notice hidden" role="status"></div>
+
+      <section class="results">
+        <div class="results-heading"><div><small>02 / YOUR RESULTS</small><h2>Country comparison</h2></div><div class="actions"><span id="sourceBadge" class="source-badge">Ready to compare</span><button id="exportBtn" class="export">↓ Export CSV</button></div></div>
+        <div class="stats">
+          <article class="stat blue-top"><div class="stat-head"><span id="nameA">India</span><i class="dot blue"></i></div><strong id="valueA">—</strong><p id="labelA">Population</p><small id="yearA">Waiting for data</small></article>
+          <article class="stat coral-top"><div class="stat-head"><span id="nameB">United States</span><i class="dot coral"></i></div><strong id="valueB">—</strong><p id="labelB">Population</p><small id="yearB">Waiting for data</small></article>
+          <article class="stat neutral-top"><div class="stat-head"><span>DATA COVERAGE</span><span>◷</span></div><strong><span id="yearCount">—</span> <small>years</small></strong><p>Years shown in chart</p><small id="updated">Waiting for data</small></article>
+        </div>
+        <section class="panel chart-panel"><div class="chart-head"><div><h3 id="chartTitle">Population over time</h3><p id="chartSubtitle">Year-by-year comparison</p></div><span id="unit" class="unit">UNIT: PEOPLE</span></div><div class="chart-wrap"><canvas id="comparisonChart"></canvas><div id="loading" class="loading hidden"><span class="spinner"></span><b>Gathering country data…</b></div></div><p class="chart-note">ⓘ &nbsp; Missing values are omitted. Always check the year shown with each value.</p></section>
+        <section class="panel table-panel"><div class="table-head"><div><h3>Yearly data</h3><p>Exact values behind the visualization</p></div><span id="recordCount" class="record-count">0 records</span></div><div class="table-scroll"><table><thead><tr><th>YEAR</th><th id="thA">INDIA</th><th id="thB">UNITED STATES</th><th>INDICATOR</th></tr></thead><tbody id="tableBody"><tr><td colspan="4" class="empty">Your yearly data will appear here.</td></tr></tbody></table></div></section>
+        <footer><b>WorldLens</b><span>Making global development data easier to understand.</span><span>Source: <a href="https://data.worldbank.org/" target="_blank" rel="noopener">World Bank Open Data ↗</a></span></footer>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
